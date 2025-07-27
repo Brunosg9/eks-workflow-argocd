@@ -19,3 +19,4 @@ variable "ec2" {
     }
   }
 }
+

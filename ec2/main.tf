@@ -9,6 +9,6 @@ terraform {
 
 provider "aws" {
   assume_role {
-    role_arn = "#"
+    role_arn = var.assume_role_arn
   }
 }

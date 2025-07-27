@@ -6,10 +6,3 @@ terraform {
         }
     }
 }
-
-provider "aws" {
-  assume_role {
-    role_arn = "#d"
-  }
-}
-
