@@ -1,6 +1,10 @@
 resource "aws_route_table" "private" {
   count   = length(var.vpc_id.private_route_table_name)
   vpc_id  = aws_vpc.this.id
+  route {
+    cidr_block = var.vpc_id.private_route_table_cidr[count.index]
+    nat_gateway_id = aws_nat_gateway.this[count.index].id
+  }
   tags = {
     Name = "${var.environment}-${var.vpc_id.private_route_table_name[count.index]}"
   }
