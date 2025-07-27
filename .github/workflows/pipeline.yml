@@ -12,7 +12,7 @@ on:
         default: 'false'
 
 env:
-  TF_VERSION: "1.12.2"
+  TF_VERSION: "1.14.0"
   
 jobs:
   terraform:
@@ -40,17 +40,16 @@ jobs:
           aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
 
       - name: Terraform Init
-        run: terraform init  # -backend-config=config/backend.tf
+        run: terraform -chdir=./vpc init
 
       - name: Terraform Validate
-        run: terraform validate
+        run: terraform -chdir=./vpc plan
 
       - name: Terraform Plan
-        run: terraform plan ./vpc # -input=false -var-file="terraform.tfvars"
+        run: terraform -chdir=./vpc apply -auto-approve
 
       - name: Terraform Apply
-        if: github.event_name != 'workflow_dispatch' && github.ref == 'refs/heads/main'
-        run: terraform apply -auto-approve ./vpc # -input=false -var-file="terraform.tfvars"
+        run: terraform -chdir=./vpc apply -auto-approve
 
       - name: Terraform Destroy
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.destroy == 'true'
