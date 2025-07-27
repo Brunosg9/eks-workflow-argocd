@@ -28,7 +28,7 @@ terraform {
   backend "s3" {
     bucket         = "github-s3-terraform-tfstate"
     key            = "vpc/terraform.tfstate"
-    region         = "us-east-1"
+    region         = "us-west-2"
     dynamodb_table = "terraform-locks"
     encrypt        = true
   }
