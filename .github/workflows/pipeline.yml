@@ -40,7 +40,7 @@ jobs:
           aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
 
       - name: Terraform Init
-        run: terraform init ./vpc # -backend-config=config/backend.tf
+        run: terraform init  # -backend-config=config/backend.tf
 
       - name: Terraform Validate
         run: terraform validate
