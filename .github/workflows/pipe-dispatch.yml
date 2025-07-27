@@ -44,4 +44,4 @@ jobs:
 
       - name: Terraform Destroy
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.destroy == 'true'
-        run: terraform destroy -auto-approve # -input=false -var-file="terraform.tfvars"
+        run: terraform -chdir=./vpc destroy # -input=false -var-file="terraform.tfvars"
