@@ -10,7 +10,7 @@ variable "vpc_id" {
     name                     = string
     internet_gateway_name    = string
     security_group_name      = string
-    nat_gateway_name         = lsit(string)
+    nat_gateway_name         = list(string)
     public_route_table_name  = list(string)
     private_route_table_name = list(string)
     public_subnet_name       = list(object({
