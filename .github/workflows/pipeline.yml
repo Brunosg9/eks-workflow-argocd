@@ -42,8 +42,8 @@ jobs:
       - name: Terraform Plan
         run: terraform -chdir=./vpc apply -auto-approve
 
-      - name: Terraform Apply
-        run: terraform -chdir=./vpc apply -auto-approve
+      #- name: Terraform Apply
+      #  run: terraform -chdir=./vpc apply -auto-approve
 
       - name: Terraform Destroy
         run: terraform -chdir=./vpc destroy -auto-approve
