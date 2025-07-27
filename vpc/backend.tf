@@ -29,7 +29,7 @@ terraform {
     bucket         = "github-s3-terraform-tfstate"
     key            = "vpc/terraform.tfstate"
     region         = "us-east-1"
-    dynamodb_table = aws_dynamodb_table.terraform_locks.name
+    dynamodb_table = "terraform-locks"
     encrypt        = true
   }
 }
