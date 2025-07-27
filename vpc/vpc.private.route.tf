@@ -6,7 +6,7 @@ resource "aws_route_table" "private" {
     nat_gateway_id = aws_nat_gateway.this[count.index].id
   }
   tags = {
-    Name = "${var.environment}-${var.vpc_id.private_route_table_name[0]}"
+    Name = "${var.environment}-${var.vpc_id.private_route_table_name[count.index]}"
   }
 }
 
