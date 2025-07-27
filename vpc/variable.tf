@@ -31,7 +31,7 @@ variable "vpc_id" {
     cidr_block                = "10.10.0.0/16"
     internet_gateway_name     = "internet-gateway"
     security_group_name       = "security-group"
-    nat_gateway_name          = ["nat-gateway-1"]
+    nat_gateway_name          = "nat-gateway-1"
     public_route_table_name   = ["public-route-table-1", "public-route-table-2"]
     private_route_table_name  = ["private-route-table-1", "private-route-table-2"]
     public_subnet_name        = [
