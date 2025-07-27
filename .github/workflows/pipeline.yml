@@ -4,13 +4,7 @@ on:
   push:
     branches: [main]
   pull_request:
-  workflow_dispatch:
-    inputs:
-      destroy:
-        description: 'Run Terraform Destroy?'
-        required: false
-        default: 'false'
-
+  
 env:
   TF_VERSION: "1.12.2"
   
@@ -52,5 +46,4 @@ jobs:
         run: terraform -chdir=./vpc apply -auto-approve
 
       - name: Terraform Destroy
-        if: github.event_name == 'workflow_dispatch' && github.event.inputs.destroy == 'true'
-        run: terraform destroy -auto-approve # -input=false -var-file="terraform.tfvars"
+        run: terraform -chdir=./vpc destroy -auto-approve
