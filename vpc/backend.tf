@@ -4,7 +4,7 @@ provider "aws" {
 
 # Bucket S3 - já criado manualmente no console
 data "aws_s3_bucket" "terraform_state_bucket" {
-  bucket = "github-s3-terraform-tfstate"
+  bucket = "github-s3-terraform-tfstate2"
 }
 
 # Tabela DynamoDB para locking do Terraform state
@@ -24,11 +24,12 @@ resource "aws_dynamodb_table" "terraform_locks" {
   }
 }
 
+
 terraform {
   backend "s3" {
     bucket         = "github-s3-terraform-tfstate"
     key            = "vpc/terraform.tfstate"
-    region         = "us-west-2"
+    region         = "us-ast-1"
     dynamodb_table = "terraform-locks"
     encrypt        = true
   }
