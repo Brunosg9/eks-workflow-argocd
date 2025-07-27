@@ -1,49 +1,49 @@
-name: terraform pipeline
+# name: terraform pipeline
 
-on:
-  push:
-    branches: [main]
-  pull_request:
+# on:
+#   push:
+#     branches: [main]
+#   pull_request:
   
-env:
-  TF_VERSION: "1.12.2"
+# env:
+#   TF_VERSION: "1.12.2"
   
-jobs:
-  terraform:
-    name: Terraform Actions
-    runs-on: ubuntu-latest
+# jobs:
+#   terraform:
+#     name: Terraform Actions
+#     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        shell: bash
+#     defaults:
+#       run:
+#         shell: bash
 
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+#     steps:
+#       - name: Checkout Code
+#         uses: actions/checkout@v4
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_version: ${{ env.TF_VERSION }}
+#       - name: Setup Terraform
+#         uses: hashicorp/setup-terraform@v3
+#         with:
+#           terraform_version: ${{ env.TF_VERSION }}
 
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
+#       - name: Configure AWS Credentials
+#         uses: aws-actions/configure-aws-credentials@v4
+#         with:
+#           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#           aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
 
-      - name: Terraform Init
-        run: terraform -chdir=./vpc init
+#       - name: Terraform Init
+#         run: terraform -chdir=./vpc init
 
-      - name: Terraform Validate
-        run: terraform -chdir=./vpc plan
+#       - name: Terraform Validate
+#         run: terraform -chdir=./vpc plan
 
-      - name: Terraform Plan
-        run: terraform -chdir=./vpc apply -auto-approve
+#       - name: Terraform Plan
+#         run: terraform -chdir=./vpc apply -auto-approve
 
-      #- name: Terraform Apply
-      #  run: terraform -chdir=./vpc apply -auto-approve
+#       - name: Terraform Apply
+#         run: terraform -chdir=./vpc apply -auto-approve
 
-      - name: Terraform Destroy
-        run: terraform -chdir=./vpc destroy -auto-approve
+#       - name: Terraform Destroy
+#         run: terraform -chdir=./vpc destroy -auto-approve
