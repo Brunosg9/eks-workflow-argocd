@@ -24,13 +24,12 @@ resource "aws_dynamodb_table" "terraform_locks" {
   }
 }
 
-
 terraform {
   backend "s3" {
     bucket         = "github-s3-terraform-tfstate"
     key            = "vpc/terraform.tfstate"
-    region         = "us-ast-1"
-    dynamodb_table = "terraform-locks"
+    region         = "us-east-1"
     encrypt        = true
+    use_lockfile   = true
   }
 }
