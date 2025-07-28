@@ -7,9 +7,4 @@ terraform {
     }
 }
 
-# provider "aws" {
-#   assume_role {
-#     role_arn = ${{ secrets.ASSUME_ROLE_ARN }}
-#   }
-# }
 
