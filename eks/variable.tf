@@ -1,10 +1,7 @@
-terraform {
-    required_providers {
-        aws = {
-        source  = "hashicorp/aws"
-        version = "~> 6.4"
-        }
-    }
+variable "environment" {
+  description = "Environment name (e.g., dev, staging, prod)"
+  type        = string
+  default     = "prd"
 }
 
 variable "eks_cluster" {
