@@ -1,5 +1,5 @@
 output "vpc_id" {
-  value       = aws_vpc.main.id
+  value       = aws_vpc.this.id
 }
 
 output "public_subnet_ids" {
@@ -19,5 +19,5 @@ output "private_route_table_ids" {
 }
 
 output "security_group_id" {
-  value       = aws_security_group.main.id
+  value       = aws_security_group.this.id
 }
