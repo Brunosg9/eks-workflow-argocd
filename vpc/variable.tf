@@ -66,4 +66,4 @@ variable "vpc_id" {
 }
 
 
-# pipeline
+# pipeline variables
